@@ -20,4 +20,4 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 # 
 # m h  dom mon dow   command
-20 * * * * ${HOME}/azure/scripts/DCM_launcher.sh
+20 * * * * ${HOME}/matlabsrc/DCM_scheduler/DCM_launcher.sh

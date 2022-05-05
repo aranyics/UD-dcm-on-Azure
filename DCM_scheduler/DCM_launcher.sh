@@ -1,9 +1,12 @@
 #!/bin/bash
 
 MAXTHREADS=5
-PROJDIR=${HOME}/azure
+PROJDIR=${HOME}/matlabsrc
+LOGDIR=${PROJDIR}/DCM_scheduler/logs
 #TORUN=test_sleep.sh
 TORUN=DCM_start.sh
+
+mkdir -p ${LOGDIR}
 
 PID=`pgrep -f "${TORUN}"`
 
@@ -30,7 +33,7 @@ do
     if [[ ${NPIDS} -lt ${MAXTHREADS} ]]; then
         echo "starting script"
         LOGFILE=`date +"%F"`_`date +"%T"`.log
-        nohup ${PROJDIR}/scripts/${TORUN} >>${PROJDIR}/scripts/logs/${LOGFILE} 2>&1 </dev/null &
+        nohup ${PROJDIR}/DCM_scheduler/${TORUN} >>${LOGDIR}/${LOGFILE} 2>&1 </dev/null &
         #nohup ${PROJDIR}/scripts/${TORUN} 2>&1 </dev/null &
     else
         echo "already running $NPIDS"
